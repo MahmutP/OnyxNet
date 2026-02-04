@@ -1,0 +1,51 @@
+body {
+    background-color: #000 !important;
+    color: #0f0 !important;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#message-area {
+    scroll-behavior: smooth;
+    max-height: 80vh; 
+    overflow-y: auto;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #111;
+}
+::-webkit-scrollbar-thumb {
+    background: #008800;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00aa00;
+}
+
+.message {
+    margin-bottom: 5px;
+}
+
+.sender {
+    font-weight: bold;
+    color: #4CAF50; /* Green */
+}
+
+.timestamp {
+    color: #2e7d32;
+    margin-right: 10px;
+}
+
+.system-msg {
+    color: #ffeb3b; /* Yellow */
+}
+
+.my-msg {
+    color: #00e676; /* Bright Green */
+}
+
+input {
+    caret-color: #0f0;
+}
