@@ -28,8 +28,19 @@ class OnyxUI:
         self.redraw_all() # Draw interface immediately at startup
         
     def get_version(self):
-        # Temporarily disabled dynamic versioning for robustness
-        return "v1.0.0"
+        try:
+            # We assume CWD is the project root (where .git is)
+            commit_count = int(subprocess.check_output(
+                ["git", "rev-list", "--count", "HEAD"],
+                stderr=subprocess.DEVNULL
+            ).decode().strip())
+            
+            major = commit_count // 100
+            minor = (commit_count % 100) // 10
+            patch = commit_count % 10
+            return f"v{major}.{minor}.{patch}"
+        except:
+            return "v1.0.0"
 
     def setup_windows(self):
         """Calculates window sizes and positions."""
