@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- 
+        HEAD SECTION
+        - Imports Bootstrap 5 CSS
+        - Links custom styles (css/style.css)
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnyxNet Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark text-light">
+
+    <!-- 
+        TOP NAVIGATION BAR
+        - Displays App Title (OnyxNet v...)
+        - Shows Connection Status (Connected/Disconnected)
+        - Shows generated User ID
+    -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-success">
+        <div class="container-fluid">
+            <a class="navbar-brand text-success fw-bold" href="#" id="app-title">ONYXNET</a>
+            <span class="navbar-text text-light" id="status-bar">
+                Status: <span id="connection-status" class="text-warning">Connecting...</span> |
+                ID: <span id="my-id" class="text-info">Generating Keys...</span>
+            </span>
+        </div>
+    </nav>
+
+    <!-- 
+        MESSAGE AREA
+        - Main chat container where messages are appended.
+        - Scrollable vertically.
+        - id="chat-messages" is targeted by app.js
+    -->
+    <div class="container-fluid flex-grow-1 d-flex flex-column" style="height: calc(100vh - 130px);">
+        <div id="chat-messages" class="flex-grow-1 overflow-auto p-3">
+            <!-- Messages go here dynamically -->
+            <div class="message system-msg text-secondary">[SYSTEM] Initializing Crypto Layer...</div>
+        </div>
+    </div>
+
+    <!-- 
+        INPUT AREA
+        - Fixed at the bottom of the screen.
+        - Contains the form and input/text field for sending messages.
+    -->
+    <div class="fixed-bottom bg-black p-3 border-top border-success">
+        <form id="chat-form" class="d-flex">
+            <span class="input-group-text bg-black text-success border-0 fw-bold">&gt;</span>
+            <input type="text" id="message-input" class="form-control bg-black text-success border-0 shadow-none"
+                placeholder="Type a message..." autocomplete="off">
+        </form>
+    </div>
+
+    <!-- 
+        HELP MODAL
+        - Bootstrap Modal popup shown via /help command.
+        - Lists available slash commands.
+    -->
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-light border-success">
+                <div class="modal-header border-success">
+                    <h5 class="modal-title text-success fw-bold">OnyxNet Help</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-unstyled">
+                        <li><strong class="text-info">/help</strong> - Show this help menu</li>
+                        <li><strong class="text-info">/clear</strong> - Clear chat history</li>
+                        <li><strong class="text-info">/quit</strong> - Disconnect (Refresh to reconnect)</li>
+                        <li><strong class="text-info">/exit</strong> - Same as /quit</li>
+                    </ul>
+                    <hr class="border-success">
+                    <small class="text-secondary">OnyxNet uses End-to-End Encryption (RSA-2048 + AES-256).</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+        SCRIPTS
+        - Bootstrap JS: For Modals and components.
+        - crypto.js: Wrapper for WebCrypto API (RSA/AES).
+        - version.js: Auto-generated file containing git version.
+        - app.js: Main application logic (WebSockets, UI).
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/crypto.js"></script>
+    <script src="js/version.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
